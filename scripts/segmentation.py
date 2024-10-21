@@ -13,9 +13,9 @@ def main():
     image = cv2.imread(TMP_IMAGE_PATH)
 
     # Debugging windwos 
-    cv2.namedWindow('finalImg', cv2.WINDOW_NORMAL)
-    cv2.namedWindow('tmpImg', cv2.WINDOW_NORMAL)
-    cv2.namedWindow('tmpImg1', cv2.WINDOW_NORMAL)
+    # cv2.namedWindow('finalImg', cv2.WINDOW_NORMAL)
+    # cv2.namedWindow('tmpImg', cv2.WINDOW_NORMAL)
+    # cv2.namedWindow('tmpImg1', cv2.WINDOW_NORMAL)
 
     # Setup Kernels for Smoothing and Dilation
     kernel_gaussian = np.ones((5,5),np.float32)/25
@@ -45,7 +45,8 @@ def main():
     It is recommended to change the smoothing algorithm _before_ adjusting these parameters.
     '''
     edges = cv2.Canny(gray,50,150,apertureSize = 3)
-    cv2.imshow("tmpImg1", edges) 
+    # cv2.imshow("tmpImg1", edges) 
+    cv2.imwrite("tmpImgA.png", edges) 
 
     # Morphological Transformations
     '''
@@ -56,8 +57,8 @@ def main():
     Increasing iterations will further dilate the edge image. 
     '''
     dilation = cv2.dilate(edges,kernel_dilation,iterations = 1)
-    cv2.imshow("tmpImg", dilation) 
-    
+    # cv2.imshow("tmpImg", dilation) 
+    cv2.imwrite("tmpImgB.png", dilation) 
 
     '''
     TODO(Chris): Further morphological transformations, specifically Closing and Opening (see link above), will further increase the clarity of the edge image. It may be possible to reduce the intensity of the dilation algorithm after Closing andn Opening are added. 
@@ -84,7 +85,8 @@ def main():
         y2 = int(lines[i, :, 3])
         cv2.line(og_image,(x1,y1),(x2,y2),(0,255,0),2)
 
-    cv2.imshow("finalImg", og_image) 
+    # cv2.imshow("finalImg", og_image) 
+    cv2.imwrite("finalImgC.png", og_image) 
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
