@@ -1,7 +1,8 @@
 import cv2
 import sys
 import numpy as np
-TMP_IMAGE_PATH = "../images/IMG-3660.jpg"
+TMP_IMAGE_PATH = "../images/jess-seg-test.png"
+# TMP_IMAGE_PATH = "IMG-3660.jpg"
 
 #percent by which the image is resized
 SCALE_PERCENT = 40
